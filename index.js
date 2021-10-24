@@ -58,6 +58,13 @@ exports.handler = async (event, context) => {
         await delay(1000);
         console.log("turned off hatch");
         break;
+      case "POST /hatchControl/twinkle":
+        await hatch.setAudioTrack(13);
+        await hatch.setVolume(25);
+        await hatch.setPower(true);
+        await delay(1000);
+        console.log("playing twinkle twinkle");
+        break;
       case "PUT":
         body = await dynamo.update(JSON.parse(event.body)).promise();
         break;
